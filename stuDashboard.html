@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+  <style>
+    /* .btn,
+.inline-btn {
+    width: 200px; /* or specify a fixed width */
+    /* padding: 0.5rem 1rem; Adjust padding as needed */
+    /* Add any other styling you desire */
+
+
+  </style>
+</head>
+<body>
+    <!-- header section starts -->
+    <header class="header">
+        <section class="flex">
+            <a href="index.html" class="logo">LearnSphere</a>
+            <form action="" method="post" class="search-form">
+                <input type="text" name="search_box" placeholder="search courses" required maxlength="100">
+                <button type="submit" class="fas fa-search" name="search_box"></button>
+            </form>
+
+            <div class="icons">
+                <div id="menu-btn" class="fas fa-bars"></div>
+                <div id="search-btn" class="fas fa-search"></div>
+                <div id="user-btn" class="fas fa-user"></div>
+                <div id="toggle-btn" class="fas fa-sun"></div>
+            </div>
+
+            <div class="profile">
+                <img src="./assets/stu1.png" alt="">
+                <h3>Aliza Nisar</h3>
+                <span>Student</span>
+                <a href="stuDashboard.html" class="btn">View Profile</a>
+                <div class="flex-btn">
+                    <a href="login.html" class="option-btn">Logout</a>
+                    <a href="register.html" class="option-btn">register</a>
+                </div>
+            </div>
+        </section>
+    </header>
+    <!-- header section ends -->
+
+    <!-- side bar section starts -->
+    <div class="side-bar">
+        <div class="close-side-bar">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="profile">
+            <img src="./assets/stu1.png" alt="">
+            <h3>Aliza Nisar</h3>
+            <span>Student</span>
+            <a href="stuDashboard.html" class="btn">View Profile</a>
+        </div>
+        <nav class="navbar">
+            <a href="stucourses.html"><i class="fas fa-graduation-cap"></i><span>My Courses</span></a>
+            <a href="report.html"><i class="fas fa-file-alt"></i><span>Report</span></a>
+            <a href="instructors.html"><i class="fas fa-chalkboard-user"></i><span>Instructors</span></a>
+            <a href="contact.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+        </nav>
+    </div>
+    <!-- side bar section ends -->
+    
+    <section class="user-profile">
+
+        <h1 class="heading">your profile</h1>
+     
+        <div class="info">
+     
+           <div class="user">
+              <img src="./assets/stu1.png" alt="">
+              <h3>Aliza Nisar</h3>
+              <p>student</p>
+              <a href="#" class="inline-btn">update profile</a>
+           </div>
+        
+           <div class="box-container">
+        
+              <div class="box">
+                 <div class="flex">
+                    <i class="fas fa-bookmark"></i>
+                    <div>
+                       <span>4</span>
+                       <p>saved playlist</p>
+                    </div>
+                 </div>
+                 <a href="#" class="inline-btn">view playlists</a>
+              </div>
+        
+              <div class="box">
+                 <div class="flex">
+                    <i class="fas fa-heart"></i>
+                    <div>
+                       <span>33</span>
+                       <p>videos liked</p>
+                    </div>
+                 </div>
+                 <a href="#" class="inline-btn">view liked</a>
+              </div>
+        
+              <div class="box">
+                 <div class="flex">
+                    <i class="fas fa-comment"></i>
+                    <div>
+                       <span>12</span>
+                       <p>videos comments</p>
+                    </div>
+                 </div>
+                 <a href="#" class="inline-btn">view comments</a>
+              </div>
+        
+           </div>
+        </div>
+     
+     </section>
+
+
+     
+    <!-- footer section starts -->
+    <footer class="footer">
+        &copy; copyright @ 2024 by <span>Aliza Memon</span> | All rights reserved!
+    </footer>
+    <!-- footer section ends -->
+
+    <script src="script.js"></script>
+</body>
+</html>

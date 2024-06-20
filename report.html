@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+  /* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+} */
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.report {
+    padding: 20px;
+    background-color: var(--white);
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-left: 20%;
+    margin-right: 15%;
+}
+
+.heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.courses, .modules {
+    background-color: var(--light-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.courses h2, .modules h2 {
+    margin-bottom: 10px;
+    color: var(--black);
+    font-size: 1.9rem;
+}
+
+.courses ul, .modules ul {
+    list-style-type: none;
+    padding: 0;
+    color: var(--black);
+    font-size: 1.5rem;
+}
+
+.courses ul li, .modules ul li {
+    padding: 10px;
+    border-bottom: var(--border);
+    color: var(--black);
+}
+
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--main-color);
+    text-align: right;
+    line-height: 20px; /* Center text vertically */
+    color: white;
+    padding-right: 10px;
+}
+    </style>
+</head>
+<body>
+    <!-- header section starts -->
+    <header class="header">
+        <section class="flex">
+            <a href="index.html" class="logo">LearnSphere</a>
+            <form action="" method="post" class="search-form">
+                <input type="text" name="search_box" placeholder="search courses" required maxlength="100">
+                <button type="submit" class="fas fa-search" name="search_box"></button>
+            </form>
+
+            <div class="icons">
+                <div id="menu-btn" class="fas fa-bars"></div>
+                <div id="search-btn" class="fas fa-search"></div>
+                <div id="user-btn" class="fas fa-user"></div>
+                <div id="toggle-btn" class="fas fa-sun"></div>
+            </div>
+
+            <div class="profile">
+                <img src="./assets/stu1.png" alt="">
+                <h3>Aliza Nisar</h3>
+                <span>Student</span>
+                <a href="stuDashboard.html" class="btn">View Profile</a>
+                <div class="flex-btn">
+                    <a href="login.html" class="option-btn">Login</a>
+                    <a href="register.html" class="option-btn">register</a>
+                </div>
+            </div>
+        </section>
+    </header>
+    <!-- header section ends -->
+
+    <!-- side bar section starts -->
+    <div class="side-bar">
+        <div class="close-side-bar">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="profile">
+            <img src="./assets/stu1.png" alt="">
+            <h3>Aliza Nisar</h3>
+            <span>Student</span>
+            <a href="stuDashboard.html" class="btn">View Profile</a>
+        </div>
+        <nav class="navbar">
+            <a href="stucourses.html"><i class="fas fa-graduation-cap"></i><span>My Courses</span></a>
+            <a href="report.html"><i class="fas fa-file-alt"></i><span>Report</span></a>
+            <a href="instructors.html"><i class="fas fa-chalkboard-user"></i><span>Instructors</span></a>
+            <a href="contact.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+        </nav>
+    </div>
+    <!-- side bar section ends -->
+    
+    <!-- report section starts -->
+    <section class="report">
+        <h1 class="heading">Student Progress Report</h1>
+        
+        <div class="courses">
+            <h2>Enrolled Courses</h2>
+            <ul>
+                <li>Course 1: Web Development</li>
+                <li>Course 2: Data Science</li>
+                <li>Course 3: Machine Learning</li>
+                <!-- Add more courses as needed -->
+            </ul>
+        </div>
+
+        <div class="modules">
+            <h2>Completed Modules</h2>
+            <ul>
+                <li>
+                    <div class="module-header">
+                        <span>Module 1: Introduction to HTML</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="module-header">
+                        <span>Module 2: Basics of CSS</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="module-header">
+                        <span>Module 3: JavaScript Fundamentals</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="module-header">
+                        <span>Module 4: Advanced JavaScript</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%;"></div>
+                    </div>
+                </li>
+                <!-- Add more modules as needed -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- report section ends -->
+
+
+   
+
+
+
+
+    <!-- footer section starts -->
+    <footer class="footer">
+        &copy; copyright @ 2024 by <span>Aliza Memon</span> | All rights reserved!
+    </footer>
+    <!-- footer section ends -->
+
+    <script src="script.js"></script>
+</body>
+</html>

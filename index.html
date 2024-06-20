@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnSphere</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+   <style>
+    /* General styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-bg);
+  
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Hero section */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  color: var(--black);
+ 
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+  gap: 5rem;
+}
+
+.hero-text {
+  flex: .5;
+  padding: 2rem;
+  text-align: left;
+}
+
+.hero-image {
+  flex: 1;
+  background-image: url("./assets/main.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+ 
+}
+
+.hero h1 {
+  font-size: 7rem;
+  margin-bottom: 1rem;
+}
+.hero h2 {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+.hero h3 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons .btn {
+  display: inline-block;
+  padding: 0.5rem 1rem; 
+  background-color: var(--main-color); 
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+
+.hero-buttons .btn:hover {
+  background-color: var(--black); 
+  color: var(--white);
+}
+
+.why-choose-us {
+  padding: 4rem 0;
+}
+
+.why-choose-us h2 {
+  padding: 5rem;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--black);
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.card {
+  background-color: var(--white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+  color:var(--black);
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--main-color); /* Replace with your primary color */
+}
+
+.card h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+.icons a {
+    font-size: 1.5rem;
+    color: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    margin-left: 0.7rem;
+    margin-top: 5px;
+}
+ .icons a:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+
+/* Filter dropdown */
+.filter-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 80px; /* Adjust as needed */
+}
+
+.filter-dropdown-btn {
+  background-color: var(--main-color); 
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-top: 10px;
+  
+}
+
+.filter-dropdown-btn:hover {
+  background-color: var(--black); 
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-content button:hover {
+  background-color: #ddd;
+}
+
+.filter-dropdown-btn i {
+  margin-left: 5px;
+}
+
+/* Show the dropdown menu on hover */
+.filter-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.category {
+  color: var(--white);
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease-in-out;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.modal-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+@media only screen and (max-width: 600px) {
+  .hero {
+    position: relative;
+  }
+
+  .hero-image {
+    height: 300px; /* Adjust the height for smaller screens */
+    background-image: url("./assets/main.png"); /* Move background image here */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .hero-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    padding: 1rem;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .hero h1 {
+    font-size: 3rem; /* Decrease the font size for smaller screens */
+    margin-bottom: 0.5rem; /* Adjust the margin for better spacing */
+  }
+
+  .hero h2 {
+    font-size: 2rem; /* Decrease the font size for smaller screens */
+    margin-bottom: 0.5rem; /* Adjust the margin for better spacing */
+  }
+
+  .hero h3 {
+    font-size: 1.5rem; /* Decrease the font size for smaller screens */
+    margin-bottom: 0.5rem; /* Adjust the margin for better spacing */
+  }
+
+  .hero p {
+    font-size: 1.2rem; /* Decrease the font size for smaller screens */
+    margin-bottom: 1rem; /* Adjust the margin for better spacing */
+  }
+
+  .hero-buttons .btn {
+    font-size: 1rem; /* Decrease the font size for smaller screens */
+    padding: 0.5rem 1rem; /* Adjust the padding for better button size */
+  }
+
+  .filter-dropdown {
+    margin-right: 20px; /* Adjust margin for smaller screens */
+  }
+
+  .icons a {
+    margin-left: 0.5rem; /* Adjust margin for smaller screens */
+  }
+
+  .option-btn {
+    margin-left: 0.5rem; /* Adjust margin for smaller screens */
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .filter-dropdown-btn {
+    display: none;
+  }
+}
+
+    
+
+
+
+
+
+
+
+   </style>
+</head>
+<body>
+  <header class="header">
+    <section class="flex">
+        <a href="index.html" class="logo">LearnSphere</a>
+        <form action="" method="post" class="search-form">
+            <input type="text" name="search_box" placeholder="search courses" required maxlength="100">
+            <button type="submit" class="fas fa-search" name="search_box"></button>
+        </form>
+        
+            <!-- Filter dropdown -->
+          <div class="filter-dropdown">
+            <button class="filter-dropdown-btn">Filter <i class="fas fa-chevron-down"></i></button>
+            <div class="dropdown-content">
+              <button class="filter-btn" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="programming">Programming</button>
+              <button class="filter-btn" data-filter="design">Design</button>
+              <button class="filter-btn" data-filter="business">Business</button>
+            </div>
+          </div>
+
+
+
+        <div class="icons">
+            <a href="#courses" class="fas fa-graduation-cap"></a>
+            <div id="search-btn" class="fas fa-search"></div>
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="toggle-btn" class="fas fa-sun"></div>
+        </div>
+
+        <div class="profile">
+            <div class="flex-btn">
+                <a href="login.html" class="option-btn">Login</a>
+                <a href="register.html" class="option-btn">register</a>
+            </div>
+        </div>
+    </section>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-image"></div>
+        <div class="hero-text">
+          <h1>INSPIRE </h1>
+          <h2>INNOVATE </h2>
+          <h3>IMPACT</h3>
+          <p>Boost your skills and knowledge with our engaging online courses.</p>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+        </div> 
+          <div class="hero-buttons">
+            <a href="login.html" class="btn">Login to Get Started</a>
+            <a href="register.html" class="btn">Create a Free Account</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <!-- selection section starts -->
+  <section class="quick-select">
+    <h1 class="heading">Quick picks</h1>
+    <div class="box-container">
+        <div class="box">
+           <h3 class="title">Popular Categories</h3> 
+           <div class="flex">
+            <a href="#"><i class="fas fa-code"></i><span>Development</span></a>
+            <a href="#"><i class="fas fa-chart-simple"></i><span>Business</span></a>
+            <a href="#"><i class="fas fa-pen"></i><span>Design</span></a>
+            <a href="#"><i class="fas fa-chart-line"></i><span>Marketing</span></a>
+            <a href="#"><i class="fas fa-music"></i><span>Music</span></a>
+            <a href="#"><i class="fas fa-camera"></i><span>Photography</span></a>
+            <a href="#"><i class="fas fa-cog"></i><span>Software</span></a>
+            <a href="#"><i class="fas fa-vial"></i><span>Science</span></a>
+        </div>
+        </div>
+
+        <div class="box">
+            <h3 class="title">Trending Courses</h3> 
+            <div class="flex">
+             <a href="#"><i class="fab fa-html5"></i><span>HTML</span></a>
+             <a href="#"><i class="fab fa-css3"></i><span>CSS</span></a>
+             <a href="#"><i class="fab fa-js"></i><span>JavaScript</span></a>
+             <a href="#"><i class="fab fa-react"></i><span>React</span></a>
+             <a href="#"><i class="fab fa-php"></i><span>PHP</span></a>
+             <a href="#"><i class="fab fa-bootstrap"></i><span>Bootstrap</span></a> 
+         </div>
+         </div>
+
+
+    </div>
+</section>
+<!-- selection section ends -->
+
+  <!-- course section starts -->
+  <section id='courses' class="courses">
+    <h1 class="heading">Our Courses</h1>
+    <div class="box-container">
+        <!-- Course Box 1 -->
+        <div class="box">
+            <div class="category">Programming</div>
+            <div class="instructor">
+                <img src="./assets/inst1.png" alt="">
+                <div>
+                    <h3>Hadiya Salman</h3>
+                </div>
+            </div>
+            <img class="thumb" src="./assets/course1.png" alt="">
+            <h3 class="title" data-modal="modal1">Python</h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <a href="#" class="inline-btn enroll-btn">Enroll</a>
+        </div>
+        <!-- Modal 1 -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <span class="close" data-modal="modal1">&times;</span>
+                <h2>Python Course Details</h2>
+                <p><strong>Syllabus:</strong> Introduction to Python, Data Types, Control Flow, Functions, Modules, and more.</p>
+                <p><strong>Instructor Bio:</strong> Hadiya Salman has over 10 years of experience in programming and has taught Python to hundreds of students.</p>
+                <p><strong>Reviews:</strong></p>
+                <p>"Excellent course! Highly recommend." - Student A</p>
+                <p>"Very informative and well-structured." - Student B</p>
+            </div>
+        </div>
+        <!-- Add similar blocks for other courses and modals -->
+        <div class="box">
+            <div class="category">Programming</div>
+            <div class="instructor">
+                <img src="./assets/inst2.png" alt="">
+                <div>
+                    <h3>Anila Ahmed</h3>
+                </div>
+            </div>
+            <img class="thumb" src="./assets/course2.png" alt="">
+            <h3 class="title" data-modal="modal2">JavaScript</h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <a href="#" class="inline-btn enroll-btn">Enroll</a>
+        </div>
+        <!-- Modal 2 -->
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <span class="close" data-modal="modal2">&times;</span>
+                <h2>JavaScript Course Details</h2>
+                <p><strong>Syllabus:</strong> JavaScript Basics, DOM Manipulation, ES6 Features, Async Programming, and more.</p>
+                <p><strong>Instructor Bio:</strong> Anila Ahmed is a seasoned web developer with a passion for teaching JavaScript.</p>
+                <p><strong>Reviews:</strong></p>
+                <p>"Great course with practical examples." - Student C</p>
+                <p>"Helped me understand JavaScript better." - Student D</p>
+            </div>
+        </div>
+
+       
+
+        <div class="box">
+          <div class="category">Programming </div>
+            <div class="instructor">
+                <img src="./assets/inst3.png" alt="">
+                <div>
+                    <h3>Saif Sheikh</h3>
+                </div>
+            </div>
+            <img class="thumb" src="./assets/course3.png" alt="">
+            <h3 class="title">C++</h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+            </div> 
+            <a href="#" class="inline-btn enroll-btn">Enroll</a>
+        </div>
+   
+
+        <div class="box">
+          <div class="category">Programming </div>
+            <div class="instructor">
+                <img src="./assets/inst4.png" alt="">
+                <div>
+                    <h3>Zahid Khan</h3>
+                </div>
+            </div>
+            <img class="thumb" src="./assets/course4.png" alt="">
+            <h3 class="title">Java </h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+            </div> 
+            <a href="#" class="inline-btn enroll-btn">Enroll</a>
+        </div>
+        
+
+        <div class="box">
+          <div class="category">Business </div>
+            <div class="instructor">
+                <img src="./assets/inst5.png" alt="">
+                <div>
+                    <h3>Zara Saleem</h3>
+                </div>
+            </div>
+            <img class="thumb" src="./assets/course5.png" alt="">
+            <h3 class="title">Marketing </h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div> 
+            <a href="#" class="inline-btn enroll-btn">Enroll</a>
+        </div>
+
+        <div class="box">
+          <div class="category">Design </div>
+            <div class="instructor">
+                <img src="./assets/inst6.png" alt="">
+                <div>
+                    <h3>Faraz Khan</h3>
+                </div>
+            </div>
+            <img class="thumb" src="./assets/course6.png" alt="">
+            <h3 class="title">Photography </h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>                
+            <a href="#" class="inline-btn enroll-btn">Enroll</a>
+        </div>
+        <div class="box">
+          <div class="category">Design </div>
+          <div class="instructor">
+              <img src="./assets/inst1.png" alt="">
+              <div>
+                  <h3>Hadiya Salman</h3>
+              </div>
+          </div>
+          <img class="thumb" src="./assets/course8.png" alt="">
+          <h3 class="title">HTML </h3>
+          <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+          </div> 
+          <a href="#" class="inline-btn enroll-btn"> Enroll</a>
+      </div>
+
+      <div class="box">
+        <div class="category">Design </div>
+          <div class="instructor">
+              <img src="./assets/inst1.png" alt="">
+              <div>
+                  <h3>Hadiya Salman</h3>
+              </div>
+          </div>
+          <img class="thumb" src="./assets/course7.png" alt="">
+          <h3 class="title">CSS</h3>
+          <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+          </div> 
+          <a href="#" class="inline-btn enroll-btn"> Enroll</a>
+      </div>
+
+      <div class="box">
+        <div class="category">Programming</div>
+          <div class="instructor">
+              <img src="./assets/inst2.png" alt="">
+              <div>
+                  <h3>Anila Ahmed</h3>
+              </div>
+          </div>
+          <img class="thumb" src="./assets/course9.png" alt="">
+          <h3 class="title">React</h3>
+          <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+          </div> 
+          <a href="#" class="inline-btn enroll-btn"> Enroll</a>
+      </div>
+
+        </div>
+
+
+ </section>
+
+    <section id='about' class="about">
+
+      <div class="row">
+   
+         <div class="image">
+            <img src="./assets/about.png" alt="">
+         </div>
+   
+         <div class="content">
+          <h2>Our Mission</h2>
+          <p>At LearnSphere, our mission is to make quality education accessible to everyone, everywhere. We believe that learning should be engaging, personalized, and available to all, regardless of geographical or financial barriers.</p>
+         </div>
+   
+      </div>
+   
+      <div class="box-container">
+   
+         <div class="box">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+               <h3>+10k</h3>
+               <p>online courses</p>
+            </div>
+         </div>
+   
+         <div class="box">
+            <i class="fas fa-user-graduate"></i>
+            <div>
+               <h3>+40k</h3>
+               <p>brilliant students</p>
+            </div>
+         </div>
+   
+         <div class="box">
+            <i class="fas fa-chalkboard-user"></i>
+            <div>
+               <h3>+2k</h3>
+               <p>expert tutors</p>
+            </div>
+         </div>
+   
+      </div>
+   
+   </section> 
+
+  <section class="why-choose-us">
+    <h2>Why Choose LearnSphere?</h2>
+    <div class="card-container">
+      <div class="card">
+        <i class="fas fa-book-open"></i>
+        <h3>Extensive Course Library</h3>
+        <p>Explore a vast collection of courses covering various academic disciplines.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h3>Expert Instructors</h3>
+        <p>Learn from qualified and passionate instructors who are dedicated to your success.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-play-circle"></i>
+        <h3>Flexible Learning</h3>
+        <p>Learn at your own pace with our on-demand video lectures and interactive learning materials.</p>
+      </div>
+    </div>
+  </section>
+
+ 
+<!-- course section ends -->
+
+  <footer class="footer">
+    &copy; copyright @ 2024 by <span>Aliza Memon</span> | All rights reserved!
+    </footer>
+
+  <script src="script.js"></script>
+  <script>
+
+</script>
+</body>
+</html>
